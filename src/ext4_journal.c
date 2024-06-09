@@ -855,6 +855,7 @@ static void jbd_display_block_tags(struct jbd_fs *jbd_fs,
 				   struct tag_info *tag_info,
 				   void *arg)
 {
+	(void) tag_info;
 	uint32_t *iblock = arg;
 	ext4_dbg(DEBUG_JBD, "Block in block_tag: %" PRIu64 "\n", tag_info->block);
 	(*iblock)++;

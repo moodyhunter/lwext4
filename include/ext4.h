@@ -52,6 +52,7 @@ extern "C" {
 #include <ext4_debug.h>
 
 #include <ext4_blockdev.h>
+#include <ext4_journal.h>
 
 /********************************OS LOCK INFERFACE***************************/
 
@@ -150,6 +151,37 @@ int ext4_mount(const char *dev_name,
  *
  * @return  Standard error code */
 int ext4_umount(const char *mount_point);
+
+/**@brief   Mount point descriptor.*/
+struct ext4_mountpoint {
+
+	/**@brief   Mount done flag.*/
+	bool mounted;
+
+	/**@brief   Mount point name (@ref ext4_mount)*/
+	char name[CONFIG_EXT4_MAX_MP_NAME + 1];
+
+	/**@brief   OS dependent lock/unlock functions.*/
+	const struct ext4_lock *os_locks;
+
+	/**@brief   Ext4 filesystem internals.*/
+	struct ext4_fs fs;
+
+	/**@brief   JBD fs.*/
+	struct jbd_fs jbd_fs;
+
+	/**@brief   Journal.*/
+	struct jbd_journal jbd_journal;
+
+	/**@brief   Block cache.*/
+	struct ext4_bcache bc;
+};
+/**@brief	Get mountpoint for a path 
+ * 
+ * @param 	path Path to file/directory
+ * @return  Mountpoint structure, or NULL if not found
+ */
+struct ext4_mountpoint *ext4_get_mount(const char *path);
 
 /**@brief   Starts journaling. Journaling start/stop functions are transparent
  *          and might be used on filesystems without journaling support.

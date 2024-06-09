@@ -42,6 +42,7 @@ extern "C" {
 #endif
 
 #include <ext4_config.h>
+#include <ext4_fs.h>
 #include <ext4_types.h>
 #include <misc/queue.h>
 #include <misc/tree.h>
