@@ -231,6 +231,7 @@ struct ext4_sblock {
 #define EXT4_FRO_COM_QUOTA 0x0100
 #define EXT4_FRO_COM_BIGALLOC 0x0200
 #define EXT4_FRO_COM_METADATA_CSUM 0x0400
+#define EXT4_FRO_COM_ORPHAN_PRESENT 0x10000
 
 /*
  * Incompatible features

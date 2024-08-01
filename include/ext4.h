@@ -183,6 +183,37 @@ struct ext4_mountpoint {
  */
 struct ext4_mountpoint *ext4_get_mount(const char *path);
 
+/**
+ * @brief Link an item to a directory
+ *
+ * @param mp the mountpoint
+ * @param parent parent dir inode ref
+ * @param ch child inode ref
+ * @param n name
+ * @param len length of name
+ * @param rename rename flag
+ * @return int
+ */
+int ext4_link(struct ext4_mountpoint *mp, struct ext4_inode_ref *parent,
+		     struct ext4_inode_ref *ch, const char *n,
+		     uint32_t len, bool rename);
+
+/**
+ * @brief Unlink an item from a directory
+ *
+ * @param mp the mountpoint
+ * @param parent parent dir inode ref
+ * @param child child inode ref
+ * @param name name
+ * @param name_len length of name
+ * @return int
+ */
+int ext4_unlink(struct ext4_mountpoint *mp,
+		       struct ext4_inode_ref *parent,
+		       struct ext4_inode_ref *child, const char *name,
+		       uint32_t name_len);
+
+
 /**@brief   Starts journaling. Journaling start/stop functions are transparent
  *          and might be used on filesystems without journaling support.
  * @warning Usage:

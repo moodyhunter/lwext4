@@ -205,6 +205,8 @@ static void ext4_fs_debug_features_ro(uint32_t features_ro)
 		ext4_dbg(DEBUG_FS, DBG_NONE "bigalloc\n");
 	if (features_ro & EXT4_FRO_COM_METADATA_CSUM)
 		ext4_dbg(DEBUG_FS, DBG_NONE "metadata_csum\n");
+	if (features_ro & EXT4_FRO_COM_ORPHAN_PRESENT)
+		ext4_dbg(DEBUG_FS, DBG_NONE "orphan_present\n");
 }
 
 int ext4_fs_check_features(struct ext4_fs *fs, bool *read_only)

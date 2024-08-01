@@ -189,7 +189,7 @@ static int ext4_has_children(bool *has_children, struct ext4_inode_ref *enode)
 	return EOK;
 }
 
-static int ext4_link(struct ext4_mountpoint *mp, struct ext4_inode_ref *parent,
+int ext4_link(struct ext4_mountpoint *mp, struct ext4_inode_ref *parent,
 		     struct ext4_inode_ref *ch, const char *n,
 		     uint32_t len, bool rename)
 {
@@ -282,7 +282,7 @@ static int ext4_link(struct ext4_mountpoint *mp, struct ext4_inode_ref *parent,
 	return r;
 }
 
-static int ext4_unlink(struct ext4_mountpoint *mp,
+int ext4_unlink(struct ext4_mountpoint *mp,
 		       struct ext4_inode_ref *parent,
 		       struct ext4_inode_ref *child, const char *name,
 		       uint32_t name_len)
